@@ -1,0 +1,5 @@
+DB_USERNAME = 'root'
+DB_PASSWORD = 'root'
+DB_HOST = '127.1.1.1'
+DB_PORT = '3306'
+DB_NAME = 'hrmproject'

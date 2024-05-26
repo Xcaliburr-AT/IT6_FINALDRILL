@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Employees</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        table {
+            margin: 0 auto;
+            border-collapse: collapse;
+            width: 80%;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        a, button {
+            margin: 5px;
+            text-decoration: none;
+            color: black;
+        }
+        form {
+            display: inline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Employees</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Middle Name</th>
+            <th>Last Name</th>
+            <th>Name Extension</th>
+            <th>Birthdate</th>
+            <th>Sex</th>
+            <th>Contact No</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+        {% for employee in employees %}
+        <tr>
+            <td>{{ employee.idemployees }}</td>
+            <td>{{ employee.first_name }}</td>
+            <td>{{ employee.middle_name }}</td>
+            <td>{{ employee.last_name }}</td>
+            <td>{{ employee.name_extension }}</td>
+            <td>{{ employee.birthdate }}</td>
+            <td>{{ employee.sex }}</td>
+            <td>{{ employee.contactno }}</td>
+            <td>{{ employee.email }}</td>
+            <td>
+                <a href="/employees/edit/{{ employee.idemployees }}">Edit</a>
+                <form action="/employees/delete/{{ employee.idemployees }}" method="post">
+                    <button type="submit">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="/employees/create">Add New Employee</a>
+</body>
+</html>
