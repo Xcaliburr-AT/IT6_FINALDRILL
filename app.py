@@ -53,9 +53,11 @@ def delete_employee(id):
     if not employee:
         return jsonify({'error': 'Employee not found.'}), 404
     if request.method == 'POST':
-        db.session.delete(employee)
-        db.session.commit()
-        return redirect(url_for('get_employees'))
+        confirmed = request.form.get('confirmed')
+        if confirmed == 'yes':
+            db.session.delete(employee)
+            db.session.commit()
+            return redirect(url_for('get_employees'))
     return render_template('delete.html', employee=employee)
 
 if __name__ == '__main__':
